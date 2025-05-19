@@ -6,11 +6,12 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Welcome to Mawokota Radio</Text>
       <Image
         source={require("../assets/images/covermawokota.jpeg")}
         style={styles.image}
       />
-      <Text style={styles.title}>Welcome to Mawokota Radio</Text>
+
       <Button title="Enter App" onPress={() => router.push("/home")} />
     </View>
   );
@@ -21,16 +22,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#eee",
   },
   image: {
-    width: 250,
-    height: 250,
+    width: "90%", // Use percentage or responsive units
+    height: "60%", // Adjust height accordingly
+    resizeMode: "contain", // Ensure image fits within bounds
     marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 25, // Consider using responsive font sizes
     fontWeight: "bold",
     marginBottom: 20,
+    marginTop: 30,
+  },
+  Button: {
+    backgroundColor: "yellow",
+    color: "red",
+    padding: "18",
   },
 });

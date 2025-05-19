@@ -6,9 +6,8 @@ export default function Splash({ navigation }) {
     const timer = setTimeout(() => {
       navigation.replace("Home");
     }, 2500);
-
     return () => clearTimeout(timer);
-  }, []);
+  }, [navigation]);
 
   return (
     <View style={styles.container}>

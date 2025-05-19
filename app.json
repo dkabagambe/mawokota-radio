@@ -19,9 +19,10 @@
       "edgeToEdgeEnabled": true
     },
     "web": {
+      "name": "Mawokota Radio",
+      "favicon": "./assets/images/favicon.png",
       "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "output": "static"
     },
     "plugins": [
       "expo-router",
