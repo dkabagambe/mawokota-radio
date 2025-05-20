@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { Button, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 export default function SplashScreen() {
   const router = useRouter();
@@ -11,8 +11,12 @@ export default function SplashScreen() {
         source={require("../assets/images/covermawokota.jpeg")}
         style={styles.image}
       />
-
-      <Button title="Enter App" onPress={() => router.push("/home")} />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => router.push("/home")}
+      >
+        <Text style={styles.buttonText}>Enter App</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -25,20 +29,31 @@ const styles = StyleSheet.create({
     backgroundColor: "#eee",
   },
   image: {
-    width: "90%", // Use percentage or responsive units
-    height: "60%", // Adjust height accordingly
-    resizeMode: "contain", // Ensure image fits within bounds
+    width: "90%",
+    height: "60%",
+    resizeMode: "contain",
     marginBottom: 20,
   },
   title: {
-    fontSize: 25, // Consider using responsive font sizes
+    fontSize: 26,
     fontWeight: "bold",
-    marginBottom: 20,
-    marginTop: 30,
+    marginBottom: 28,
+    marginTop: 24,
+    color: "#000",
+    fontFamily: "garamond",
   },
-  Button: {
-    backgroundColor: "yellow",
-    color: "red",
-    padding: "18",
+  button: {
+    paddingVertical: 20,
+    paddingHorizontal: 50,
+    backgroundColor: "#000", // Add a background color
+    borderRadius: 5, // Add some rounded corners
+  },
+  buttonText: {
+    fontFamily: "cormorant",
+    textTransform: "capitalize",
+    color: "#ffffff", // Change text color to white
+    fontSize: 18,
+    textAlign: "center",
+    fontWeight: "bold",
   },
 });
