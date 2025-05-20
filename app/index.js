@@ -6,7 +6,7 @@ export default function SplashScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome to Mawokota Radio</Text>
+      <Text style={styles.title}>Welcome to Mawokota Radio (99.9 FM) </Text>
       <Image
         source={require("../assets/images/covermawokota.jpeg")}
         style={styles.image}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     fontWeight: "bold",
-    marginBottom: 28,
+    marginBottom: "2%",
     marginTop: 24,
     color: "#000",
     fontFamily: "garamond",

@@ -3,11 +3,11 @@ import { Image, StyleSheet, Text, View } from "react-native";
 export default function About() {
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>About Mawokota Radio</Text>
       <Image
         source={require("../assets/images/covermawokota.jpeg")}
         style={styles.logo}
       />
-      <Text style={styles.title}>About Mawokota Radio</Text>
       <Text style={styles.description}>
         Mawokota Radio is your trusted voice for community news, entertainment,
         and cultural programming. We are proud to serve the people of Mawokota
@@ -26,29 +26,34 @@ const styles = StyleSheet.create({
     padding: 25,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
+    backgroundColor: "#f9f9f9",
   },
   logo: {
-    width: 140,
-    height: 140,
+    width: "90%",
+    height: "60%",
+    resizeMode: "contain",
     borderRadius: 12,
     marginBottom: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: "bold",
     marginBottom: 10,
+    marginTop: 24,
+    color: "#000",
+    fontFamily: "garamond",
   },
   description: {
-    fontSize: 16,
-    textAlign: "center",
-    color: "#444",
-    marginBottom: 15,
+    fontSize: 18,
+    color: "#333",
+    marginBottom: 20,
+    fontFamily: "garamond",
   },
   mission: {
     fontSize: 16,
     textAlign: "center",
-    fontStyle: "italic",
-    color: "#2a6",
+    color: "blue",
+    fontFamily: "garamond",
+    fontWeight: "bold",
   },
 });

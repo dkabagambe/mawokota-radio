@@ -91,7 +91,7 @@ export default function Home() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>📅 Upcoming Shows</Text>
           <Text style={styles.show}>
-            • Morning Talk with Sarah (9am - 11am)
+            • Morning Talk with Prince O Ssalongo (9am - 11am)
           </Text>
           <Text style={styles.show}>• Youth Vibes (3pm - 5pm)</Text>
         </View>
@@ -111,9 +111,6 @@ export default function Home() {
         <TouchableOpacity onPress={() => router.push("/settings")}>
           <Text style={styles.menuText}>⚙️ Settings</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => router.push("/splash")}>
-          <Text style={styles.menuText}>💧 Splash</Text>
-        </TouchableOpacity>
       </View>
     </View>
   );
@@ -125,14 +122,15 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9",
   },
   container: {
-    paddingVertical: 50,
+    paddingVertical: 20,
     paddingHorizontal: 24,
     alignItems: "center",
     paddingBottom: 100,
   },
   logo: {
     width: "90%",
-    height: 160,
+    height: "60%",
+    resizeMode: "contain",
     borderRadius: 10,
     marginBottom: 20,
     borderWidth: 2,
@@ -179,12 +177,14 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   cta: {
-    fontSize: 15,
-    fontStyle: "italic",
+    fontSize: 16,
     color: "#000000",
     marginBottom: 30,
+    fontFamily: "",
   },
   section: {
+    display: "flex",
+    alignItems: "center",
     width: "100%",
     backgroundColor: "#f5f5f5",
     padding: 16,
@@ -213,14 +213,15 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: "blue",
+    backgroundColor: "#000",
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 10,
     borderTopWidth: 1,
-    borderTopColor: "#ddd",
+    borderTopColor: "red",
   },
   menuText: {
+    fontFamily: "garamond",
     color: "#fff",
     fontWeight: "600",
     fontSize: 18,
