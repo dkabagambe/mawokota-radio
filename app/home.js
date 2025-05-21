@@ -1,5 +1,5 @@
 import { Audio } from "expo-av";
-import { useRouter } from "expo-router"; // ✅ Expo Router navigation
+import { useRouter } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -16,7 +16,7 @@ export default function Home() {
   const soundRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter(); // ✅ Use this instead of useNavigation()
+  const router = useRouter();
 
   const streamUrl = "https://stream-175.zeno.fm/le9vbqo47hotv";
 
@@ -57,47 +57,42 @@ export default function Home() {
 
   return (
     <View style={styles.mainContainer}>
-      <ScrollView contentContainerStyle={styles.container}>
-        <StatusBar barStyle="dark-content" backgroundColor="#f9f9f9" />
+      <StatusBar barStyle="dark-content" backgroundColor="#f9f9f9" />
 
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Image
           source={require("../assets/images/covermawokota.jpeg")}
-          style={styles.logo}
-          resizeMode="cover"
+          style={styles.coverImage}
         />
 
-        <Text style={styles.header}>Mawokota Radio</Text>
-        <Text style={styles.tagline}>EDOOBOZI LYA BANAMPIGI</Text>
+        <Text style={styles.header}>📻 Mawokota Radio</Text>
+        <Text style={styles.tagline}>Eddobozi Lya Banampigi</Text>
 
-        {isLoading ? (
-          <ActivityIndicator
-            size="large"
-            color="#007B4F"
-            style={styles.loader}
-          />
-        ) : (
-          <TouchableOpacity
-            style={[styles.button, isPlaying ? styles.pause : styles.play]}
-            onPress={isPlaying ? stopStream : playStream}
-          >
-            <Text style={styles.buttonText}>
-              {isPlaying ? "⏸ Pause" : "▶️ Play"}
-            </Text>
-          </TouchableOpacity>
-        )}
-
-        <Text style={styles.cta}>🎧 Tune In Live</Text>
+        <View style={styles.playerContainer}>
+          {isLoading ? (
+            <ActivityIndicator size="large" color="#007B4F" />
+          ) : (
+            <TouchableOpacity
+              style={[styles.button, isPlaying ? styles.pause : styles.play]}
+              onPress={isPlaying ? stopStream : playStream}
+            >
+              <Text style={styles.buttonText}>
+                {isPlaying ? "⏸ Pause" : "▶️ Play Live"}
+              </Text>
+            </TouchableOpacity>
+          )}
+          <Text style={styles.cta}>🎧 Tune In Live from Anywhere</Text>
+        </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>📅 Upcoming Shows</Text>
           <Text style={styles.show}>
-            • Morning Talk with Prince O Ssalongo (9am - 11am)
+            • Morning Talk with Prince O Ssalongo (9AM - 11AM)
           </Text>
-          <Text style={styles.show}>• Youth Vibes (3pm - 5pm)</Text>
+          <Text style={styles.show}>• Youth Vibes (3PM - 5PM)</Text>
         </View>
       </ScrollView>
 
-      {/* 🔽 Bottom Menu Navigation */}
       <View style={styles.menuBar}>
         <TouchableOpacity onPress={() => router.push("/home")}>
           <Text style={styles.menuText}>🏠 Home</Text>
@@ -121,48 +116,48 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#f9f9f9",
   },
-  container: {
-    paddingVertical: 20,
-    paddingHorizontal: 24,
+  scrollContainer: {
+    padding: 24,
     alignItems: "center",
-    paddingBottom: 100,
+    paddingBottom: 120,
   },
-  logo: {
-    width: "90%",
-    height: "60%",
-    resizeMode: "contain",
-    borderRadius: 10,
+  coverImage: {
+    width: "100%",
+    height: 200,
+    borderRadius: 14,
     marginBottom: 20,
     borderWidth: 2,
     borderColor: "#007B4F",
   },
   header: {
-    fontSize: 28,
-    fontWeight: "700",
+    fontSize: 30,
+    fontWeight: "bold",
     color: "#222",
     marginBottom: 6,
+    textAlign: "center",
   },
   tagline: {
-    fontSize: 14,
-    color: "red",
+    fontSize: 16,
+    color: "#B22222",
     fontWeight: "600",
     marginBottom: 24,
-    marginTop: 10,
     fontStyle: "italic",
+    textAlign: "center",
   },
-  loader: {
-    marginVertical: 20,
+  playerContainer: {
+    alignItems: "center",
+    marginBottom: 40,
   },
   button: {
     paddingVertical: 14,
     paddingHorizontal: 36,
     borderRadius: 30,
-    marginVertical: 20,
+    marginVertical: 12,
+    elevation: 5,
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
     shadowRadius: 4,
-    elevation: 4,
   },
   play: {
     backgroundColor: "#007B4F",
@@ -172,41 +167,40 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: "#fff",
-    fontSize: 17,
-    fontWeight: "600",
-    textAlign: "center",
-  },
-  cta: {
-    fontSize: 16,
-    color: "#000000",
-    marginBottom: 30,
-    fontFamily: "",
-  },
-  section: {
-    display: "flex",
-    alignItems: "center",
-    width: "100%",
-    backgroundColor: "#f5f5f5",
-    padding: 16,
-    borderRadius: 12,
-    marginBottom: 20,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 3,
-    elevation: 2,
-  },
-  sectionTitle: {
     fontSize: 18,
     fontWeight: "600",
+  },
+  cta: {
+    fontSize: 15,
     color: "#333",
-    marginBottom: 20,
+    fontStyle: "italic",
+    textAlign: "center",
+    marginTop: 4,
+  },
+  section: {
+    width: "100%",
+    backgroundColor: "#ffffff",
+    padding: 18,
+    borderRadius: 16,
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.06,
+    shadowRadius: 6,
+    elevation: 3,
+  },
+  sectionTitle: {
+    fontSize: 20,
+    fontWeight: "700",
+    color: "#222",
+    marginBottom: 12,
+    textAlign: "center",
   },
   show: {
-    fontSize: 17,
-    color: "#333",
+    fontSize: 16,
+    color: "#444",
     marginBottom: 6,
-    fontFamily: "garamond",
+    fontFamily: "serif",
+    textAlign: "center",
   },
   menuBar: {
     position: "absolute",
@@ -217,13 +211,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingVertical: 10,
-    borderTopWidth: 1,
-    borderTopColor: "red",
+    borderTopWidth: 2,
+    borderTopColor: "#007B4F",
   },
   menuText: {
-    fontFamily: "garamond",
+    fontSize: 16,
     color: "#fff",
     fontWeight: "600",
-    fontSize: 18,
   },
 });

@@ -1,10 +1,18 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useEffect, useState } from "react";
-import { StyleSheet, Switch, Text, View } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
 
 export default function Settings() {
   const [backgroundPlay, setBackgroundPlay] = useState(true);
   const [notifications, setNotifications] = useState(false);
+  const fadeIn = useRef(new Animated.Value(0)).current; // ✅ fix: useRef ensures stable value
 
   useEffect(() => {
     const loadSettings = async () => {
@@ -20,6 +28,13 @@ export default function Settings() {
     };
 
     loadSettings();
+
+    // ✅ Proper animation setup
+    Animated.timing(fadeIn, {
+      toValue: 1,
+      duration: 600,
+      useNativeDriver: true,
+    }).start();
   }, []);
 
   const toggleBackgroundPlay = async (value) => {
@@ -41,37 +56,78 @@ export default function Settings() {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.header}>⚙️ App Settings</Text>
+    <ScrollView contentContainerStyle={styles.container}>
+      <Animated.View style={[styles.animatedWrapper, { opacity: fadeIn }]}>
+        <Text style={styles.header}>⚙️ App Settings</Text>
 
-      <View style={styles.settingRow}>
-        <Text style={styles.settingText}>Background Play</Text>
-        <Switch value={backgroundPlay} onValueChange={toggleBackgroundPlay} />
-      </View>
+        <View style={styles.card}>
+          <View style={styles.settingRow}>
+            <View>
+              <Text style={styles.settingText}>🎵 Background Play</Text>
+              <Text style={styles.subText}>
+                Continue audio while app is in background.
+              </Text>
+            </View>
+            <Switch
+              value={backgroundPlay}
+              onValueChange={toggleBackgroundPlay}
+              trackColor={{ false: "#ccc", true: "#4CAF50" }}
+              thumbColor={backgroundPlay ? "#fff" : "#f4f3f4"}
+            />
+          </View>
 
-      <View style={styles.settingRow}>
-        <Text style={styles.settingText}>Notifications</Text>
-        <Switch value={notifications} onValueChange={toggleNotifications} />
-      </View>
+          <View style={styles.settingRow}>
+            <View>
+              <Text style={styles.settingText}>🔔 Notifications</Text>
+              <Text style={styles.subText}>
+                Get notified about new shows and updates.
+              </Text>
+            </View>
+            <Switch
+              value={notifications}
+              onValueChange={toggleNotifications}
+              trackColor={{ false: "#ccc", true: "#4CAF50" }}
+              thumbColor={notifications ? "#fff" : "#f4f3f4"}
+            />
+          </View>
+        </View>
 
-      <Text style={styles.note}>
-        Changes will apply immediately. Customize your experience!
-      </Text>
-    </View>
+        <Text style={styles.note}>
+          Your preferences are saved automatically and apply immediately.
+        </Text>
+      </Animated.View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    padding: 25,
-    backgroundColor: "#f9f9f9",
+    padding: 24,
+    backgroundColor: "#f2f2f2",
+    alignItems: "center",
+    flexGrow: 1,
+  },
+  animatedWrapper: {
+    width: "100%",
   },
   header: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 20,
+    marginBottom: 25,
     textAlign: "center",
+    color: "#003366",
+    fontFamily: "serif",
+  },
+  card: {
+    backgroundColor: "#fff",
+    borderRadius: 14,
+    padding: 20,
+    width: "100%",
+    shadowColor: "#000",
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.1,
+    shadowRadius: 6,
+    elevation: 4,
   },
   settingRow: {
     flexDirection: "row",
@@ -80,12 +136,22 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   settingText: {
-    fontSize: 16,
+    fontSize: 18,
+    fontWeight: "600",
+    color: "#222",
+    fontFamily: "serif",
+  },
+  subText: {
+    fontSize: 13,
+    color: "#666",
+    fontStyle: "italic",
+    marginTop: 3,
   },
   note: {
     marginTop: 30,
     textAlign: "center",
-    fontStyle: "italic",
     color: "#888",
+    fontSize: 13,
+    fontStyle: "italic",
   },
 });
