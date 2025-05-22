@@ -115,11 +115,12 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: "#f9f9f9",
+    overflow: "hidden",
   },
   scrollContainer: {
-    padding: 24,
+    padding: 14,
     alignItems: "center",
-    paddingBottom: 120,
+    paddingBottom: 20,
   },
   coverImage: {
     width: "100%",
@@ -213,6 +214,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     borderTopWidth: 2,
     borderTopColor: "#007B4F",
+    paddingBottom: 20,
   },
   menuText: {
     fontSize: 16,

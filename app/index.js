@@ -50,7 +50,7 @@ export default function SplashScreen() {
           onPress={() => router.push("/home")}
           activeOpacity={0.8}
         >
-          <Text style={styles.buttonText}>Enter App</Text>
+          <Text style={styles.buttonText}>Listen Now </Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
@@ -62,6 +62,7 @@ const styles = StyleSheet.create({
     flex: 1,
     width: "100%",
     height: "100%",
+    objectFit: "cover",
   },
   overlay: {
     flex: 1,
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: 20,
+    paddingVertical: 20,
   },
   logo: {
     width: 220,
