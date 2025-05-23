@@ -1,3 +1,5 @@
+// 👉 Import your AudioProvider
+import { useColorScheme } from "@/hooks/useColorScheme";
 import {
   DarkTheme,
   DefaultTheme,
@@ -7,8 +9,7 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
-
-import { useColorScheme } from "@/hooks/useColorScheme";
+import { AudioProvider } from "./contexts/AudioContext";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
@@ -22,24 +23,24 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        {/* Main navigation is handled inside the (tabs) folder */}
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-
-        {/* Optional pages directly accessible outside tabs */}
-        <Stack.Screen name="about" />
-        <Stack.Screen name="home" />
-        <Stack.Screen name="index" />
-        <Stack.Screen name="schedule" />
-        <Stack.Screen name="settings" />
-        <Stack.Screen name="splash" />
-
-        {/* Fallback for unknown routes */}
-        <Stack.Screen name="+not-found" options={{ title: "Page Not Found" }} />
-      </Stack>
-
-      <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
-    </ThemeProvider>
+    <AudioProvider>
+      {/* 👈 Wrap everything inside AudioProvider */}
+      <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="about" />
+          <Stack.Screen name="home" />
+          <Stack.Screen name="index" />
+          <Stack.Screen name="schedule" />
+          <Stack.Screen name="settings" />
+          <Stack.Screen name="splash" />
+          <Stack.Screen
+            name="+not-found"
+            options={{ title: "Page Not Found" }}
+          />
+        </Stack>
+        <StatusBar style={colorScheme === "dark" ? "light" : "dark"} />
+      </ThemeProvider>
+    </AudioProvider>
   );
 }
