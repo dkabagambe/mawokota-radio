@@ -9,11 +9,120 @@ import {
 } from "react-native";
 
 const shows = [
-  { time: "6am - 8am", title: "🎵 Early Rise Gospel" },
-  { time: "9am - 11am", title: "🎙️ Morning Talk with Ssalongo" },
-  { time: "12pm - 2pm", title: "🎶 Lunch Hour Music" },
-  { time: "3pm - 5pm", title: "🔥 Youth Vibes" },
-  { time: "7pm - 9pm", title: "📰 Evening News & Interviews" },
+  {
+    title: "🌅 MORNING DOZ",
+    time: "6:00am - 10:00am",
+    days: "Mon to Fri",
+    presenter: "Omukonkonyi William Pro with Priscilla",
+  },
+  {
+    title: "🚐 MAWOKOTA EXPRESS",
+    time: "12:00pm - 3:00pm",
+    days: "Mon to Fri",
+    presenter: "Maama Bulamu Kerah Promise",
+  },
+  {
+    title: "🏟️ OLUTINDO LWEBYEMIZANYO",
+    time: "3:00pm - 4:00pm",
+    days: "Mon to Fri",
+    presenter: "Kayemba Bashir",
+  },
+  {
+    title: "🎧 VIBE KU VIBE",
+    time: "4:00pm - 8:00pm",
+    days: "Mon to Fri",
+    presenter: "DJ Davie Kingmino",
+  },
+  {
+    title: "🎵 TOP 10 Tonight",
+    time: "10:00pm - 11:00pm",
+    days: "Mon to Fri",
+    presenter: "Dr KalisMart",
+  },
+  {
+    title: "❤️ EKIRUNGO KY'OMUKWANO",
+    time: "11:00pm - 1:00am",
+    days: "Mon to Thursday",
+    presenter: "Handsome Jac",
+  },
+  {
+    title: "🎶 NIGHT MIX",
+    time: "1:00am - 5:00am",
+    days: "Mon to Thursday",
+    presenter: "Handsome Jac",
+  },
+  {
+    title: "🎉 FRIDAY NIGHT JAM",
+    time: "11:00pm - 6:00am",
+    days: "Friday",
+    presenter: "Omusanirizi Izzly Pro",
+  },
+  {
+    title: "🎊 SATURDAY CHEZA",
+    time: "6:00am - 10:00am",
+    days: "Saturday",
+    presenter: "Prince O Ssalongo",
+  },
+  {
+    title: "📻 PROGRAM OMUNAALA",
+    time: "10:00am - 12:00pm",
+    days: "Saturday",
+    presenter: "Mayiga Paul",
+  },
+  {
+    title: "🔊 SATURDAY KOONA",
+    time: "12:00pm - 4:00pm",
+    days: "Saturday",
+    presenter: "DJ Davie Kingmino",
+  },
+  {
+    title: "⭐ SATURDAY SPECIAL",
+    time: "5:00pm - 7:00pm",
+    days: "Saturday",
+    presenter: "Fik",
+  },
+  {
+    title: "🎛️ SATURDAY MIX",
+    time: "7:00pm - 6:00am",
+    days: "Saturday",
+    presenter: "William Pro Omukonkonyi",
+  },
+  {
+    title: "🙏 AMATENDO SPECIAL",
+    time: "6:00am - 10:00am",
+    days: "Sunday",
+    presenter: "Maama Bulamu Kerah Promise",
+  },
+  {
+    title: "🎼 THE VIBE TUNES",
+    time: "10:00am - 3:00pm",
+    days: "Sunday",
+    presenter: "Handsome Jack",
+  },
+  {
+    title: "🌟 SUNDAY SPECIAL",
+    time: "3:00pm - 7:00pm",
+    days: "Sunday",
+    presenter: "Dr KalisMart",
+  },
+  {
+    title: "🎵 MUSIC BREAK",
+    time: "Up to 9:00am",
+    days: "Sunday",
+    presenter: "—",
+  },
+  {
+    title: "🌄 MUZUKUKE TUDE KUNNONO",
+    time: "9:00am - 12:00pm",
+    days: "Sunday",
+    presenter: "Prince O Ssalongo with Ssalongo Bilooto Muchwezi",
+  },
+  {
+    title: "🌙 SUNDAY NIGHT TUNES",
+    time: "12:00am - 5:00am",
+    days: "Sunday Night",
+    presenter: "Luke MC",
+  },
 ];
 
 export default function Schedule() {
